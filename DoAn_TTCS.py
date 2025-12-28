@@ -4,7 +4,6 @@ import copy
 import random
 import time
 
-# Cấu hình hằng số giao diện
 BLOCK_WIDTH = 550
 CANVAS_MIN_HEIGHT = 250
 
@@ -74,7 +73,7 @@ class MemoryApp:
         self.setup_ui()
 
     def setup_ui(self):
-        # 1. Khu vực nhập liệu
+        #. Khu vực nhập liệu
         input_frame = ttk.LabelFrame(self.root, text=" Cấu hình hệ thống ")
         input_frame.pack(fill="x", padx=20, pady=10)
 
@@ -88,7 +87,7 @@ class MemoryApp:
         self.entry_processes.grid(row=1, column=1, padx=10)
         self.entry_processes.insert(0, "212 417 112 426")
 
-        # 2. Nút điều khiển
+        #. Nút điều khiển
         btn_frame = tk.Frame(self.root)
         btn_frame.pack(pady=10)
         self.algorithms = ["FIRST FIT", "BEST FIT", "WORST FIT", "NEXT FIT"]
@@ -98,7 +97,7 @@ class MemoryApp:
                             bg="#3498db", fg="white", font=("Arial", 9, "bold"))
             btn.pack(side=tk.LEFT, padx=10)
 
-        # 3. Vùng hiển thị Canvas có Scrollbar
+        #. Vùng hiển thị Canvas có Scrollbar
         self.main_display = tk.Frame(self.root)
         self.main_display.pack(expand=True, fill="both", padx=20)
         
@@ -109,7 +108,6 @@ class MemoryApp:
             self.main_display.grid_columnconfigure(i%2, weight=1)
             self.main_display.grid_rowconfigure(i//2, weight=1)
 
-            # Scrollbar tích hợp
             canvas = tk.Canvas(frame, bg="white", highlightthickness=0)
             v_scroll = tk.Scrollbar(frame, orient="vertical", command=canvas.yview)
             h_scroll = tk.Scrollbar(frame, orient="horizontal", command=canvas.xview)
@@ -126,14 +124,13 @@ class MemoryApp:
             
             self.canvases.append((canvas, scrollable_frame))
 
-        # 4. Bảng thống kê số liệu
+        #. Bảng thống kê số liệu
         stat_frame = ttk.LabelFrame(self.root, text=" Báo cáo phân tích hiệu năng ")
         stat_frame.pack(fill="both", padx=20, pady=10)
         self.info_text = tk.Text(stat_frame, height=10, font=("Consolas", 10), bg="#2c3e50", fg="#ecf0f1")
         self.info_text.pack(fill="both", padx=5, pady=5)
 
     def draw_memory_pro(self, parent_frame, title, original_blocks, processes, alloc):
-        # Xóa nội dung cũ trong frame con của canvas
         for widget in parent_frame.winfo_children():
             widget.destroy()
 
