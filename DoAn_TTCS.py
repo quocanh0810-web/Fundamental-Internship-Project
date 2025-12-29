@@ -133,7 +133,7 @@ class MemoryApp:
         self.tree.heading("used", text="Đã dùng (K)")
         self.tree.heading("free", text="Còn trống (K)")
         self.tree.heading("largest", text="Lỗ lớn nhất")
-        self.tree.heading("ext_frag", text="Phân mảnh ngoài")
+        self.tree.heading("ext_frag", text="Bộ nhớ trống")
         self.tree.heading("time", text="Thời gian (ms)")
 
         for col in columns:
